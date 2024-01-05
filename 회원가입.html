@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="kor">
+    <head>
+        <meta charset="UTF-8">
+        <title>회원가입</title>
+    </head>
+    <body>
+        <header>
+            <h1><strong>회원가입</strong></h1>
+        </header>
+        
+        <main>
+            <form>
+                <fieldset>
+                    <legend><strong>필수 입력 사항</strong></legend>
+                    <label for="name">이름: </label>
+                    <input type="text" id="name" name="name" size = 20 placeholder="실명을 입력해주세요.">
+                    <br>
+
+                    <label for="ID">아이디: </label>
+                    <input type="text" id="ID" name="ID" size = 40 placeholder="숫자,알파벳을 조합해 6자리 이상 입력하세요.">
+                    <br>
+                    <label for="pw">비밀번호: </label>
+                    <input type="password" id="pw" name="pw" size= 40 placeholder="대소문자,숫자를 조합하여 8자리 이상 설정하세요">
+                    <br>
+                    <label for="email_address">이메일: </label>
+                    <input type="email" id="email_address" name="email_address" placeholder="예:홍길동@gmail.com">
+                    <br>
+                    <label for="phone">휴대폰: </label>
+                    <input type="text" id="phone" name="phone" placeholder="'-'을 빼고 입력하세요.">
+                    <br>
+                    <button>가입하기</button>&nbsp;&nbsp;<button>취소</button>
+                </fieldset>
+                <fieldset>
+                    <legend><strong>선택 입력사항</strong></legend>
+                    <h5>취미를 선택해주세요(중복선택가능)</h5>
+                    <label>
+                        <input type="checkbox" id="exercise" name="hobby"> 운동                
+                    </label>
+                    
+                    <label>
+                        <input type="checkbox" id="travel" name="hobby"> 여행                
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="cooking" name="hobby"> 요리                
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="reading" name="hobby"> 독서                
+                    </label>
+                    
+                    <label>
+                        <input type="checkbox" id="netflix" name="hobby"> 넷플시청                
+                    </label>
+                    <h5>성별을 선택해주세요</h5>
+                    <input type="radio" id="female" name="gender">여성
+                    <input type="radio" id="male" name="gender">남성
+                    <input type="radio" id="refuse" name="gender">밝히고 싶지 않음
+                </fieldset>
+            </form>
+        </main>
+        
+        <footer>
+
+        </footer>
+    </body>
+</html>
