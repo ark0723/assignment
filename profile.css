@@ -1,0 +1,52 @@
+*{
+    text-align: center;
+}
+
+html{
+    background-color: #b3a194;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 16px;
+}
+
+body{
+    width: 860px;
+    margin: auto; 
+    /*블록요소에 마진을 auto로 설정하면, 
+    너비에서 남는 여백을 동일하게 분배하므로 
+    창의 크기가 바뀌어도 알아서 가운데 정렬되는 효과가 있음*/ 
+}
+
+div#jeju{
+    background-color: antiquewhite;
+}
+
+
+h1{
+    font-size: 48px;
+}
+
+h3{
+    font-size: 36px;
+}
+#osuloc{
+    width: 200px;
+    border-radius: 100px;
+}
+
+#chicago{
+    height:300px;
+}
+
+#barbeque{
+    height: 300px;
+}
+
+#lpga{
+    height: 300px
+}
+
+
+
+p{
+    font-size: 1.5rem;
+}
