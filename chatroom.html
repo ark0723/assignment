@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>채팅방 만들기</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+        
+        <link href="chat.css" rel="stylesheet">
+    </head>
+    <body>
+        <!--1. 상태바 만들기-->
+        <!--2. 채팅입력창 만들기-->
+        <div class="container">
+            <main class="chat_screen">
+                <section class="chat_screen_bar">
+                    <div class="user">
+                        <div class ="user_column">
+                            <img src=../images/busan.jpg class="user_pic">
+                        </div>
+                        <div class = "user_column">
+                            <p class="user_nick">베리타르트</p>
+                            <p class="user_count">2</p>
+                        </div>
+                        <div id="menu">
+                            <div class="gear"></div>
+                            <strong>Setting</strong>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            
+            <form class="chat_form">
+                <section class="chat_form_fields">
+                    <textarea class="chat_form_msg"></textarea>
+                    <input type="submit" value="전송" class="chat_form_button">
+                </section>
+            </form>
+        </div>
+    </body>
+</html>

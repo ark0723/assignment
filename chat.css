@@ -1,0 +1,104 @@
+/*전체 세팅*/
+
+*{
+    box-sizing: border-box;
+    font-family: 'Single Day', cursive;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    margin: 0px;
+}
+
+.container{
+    height: 100%;
+    background-color: blanchedalmond;
+}
+/*
+스크린 크기(main) 조정: 전체중에서 채팅입력창(120px)제외한 나머지만 쓰겠다(calc()함수 사용)
+*/
+
+.chat_screen{
+    height: calc(100% - 120px);
+}
+
+/*유저 정보 표시되는 부분*/
+.user{
+    background-color: white;
+    padding: 16px;
+    height: 80px;
+}
+
+.user_pic{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+}
+
+.user_column{
+    float: left;
+}
+
+.user_nick, .user_count{
+    margin: 5px;
+}
+
+.user_count{
+    font-size: 12px;
+    color: gray;
+}
+
+#menu{
+    background-color: gray;
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    float: right;
+}
+
+#menu>.gear{
+    position:absolute;
+    background-image: url(../images/gear.jpeg);
+    background-size: 50px;
+    width:50px;
+    height: 50px;
+}
+
+/* 채팅 입력창 */
+.chat_form{
+    height: 120px;
+    background-color: white;
+}
+
+.chat_form_msg{
+    float: left;
+    width: calc(100% - 120px);
+    height: 120px;
+    border: None;
+    font-size: 24px;
+    padding: 10px;
+    resize: None;
+}
+
+.chat_form_button{
+    float: right;
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    font-size: 18px;
+}
+
+.chat_form_button:active{
+    background-color: rgb(250, 220, 175);
+}
+
+.chat_form_msg:focus{
+    outline: none;
+}
