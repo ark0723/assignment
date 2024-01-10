@@ -1,0 +1,78 @@
+/*
+topic: 말풍선 모듈 만들기
+
+challenge:
+- 시맨틱 구조 사용
+- list의 불릿(점)을 지우기
+- CSS 선택자를 이용하기(전체, 요소, 클래스, 아이디, 자식, 후손, 속성 )
+    - ➕넘치는 말풍선은 스크롤 처리하기(말풍선의 모든 요소들이 노란 배경 안에 위치해야 합니다.)
+        
+        ➕상대방과 대화하는 형식으로 주고받는 말풍선 만들어 보기
+        
+- 의사 클래스(pseudo-class) 이용하기
+- position 사용하여 부모위치를 기준으로 잡기
+- 말풍선의 transition을 속성넣기
+*/
+ul.chat_screen_text{
+    height: calc(100vh - 230px);
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.chat_screen_text > .text:nth-child(2n-1){
+    background-color: burlywood;
+    width: 280px;
+    height: 50px;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    line-height: 30px;
+    position: relative;
+    left: 15px;
+}
+
+.chat_screen_text > .text:nth-child(2n-1)::after{
+    content:"";
+    border-right: 16px solid burlywood;
+    border-bottom: 16px solid transparent;
+    position: absolute;
+    top: 10px;
+    left:-10px;
+}
+
+.chat_screen_text > .text:nth-child(2n){
+    background-color: burlywood;
+    width: 280px;
+    height: 50px;
+    margin: 0 0 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    line-height: 30px;
+    display: flex;
+    position: relative;
+    left: calc(100% - 295px);
+}
+
+.chat_screen_text > .text:nth-child(2n)::after{
+    content:"";
+    border-left: 16px solid burlywood;
+    border-bottom: 16px solid transparent;
+    position: absolute;
+    top: 10px;
+    right: -10px;
+}
+
+
+
+.chat_screen_text > .text:hover{
+    background-color: rgb(115, 91, 59);
+    transition: background-color 1500ms 200ms ease-in;
+}
+
+.chat_screen_text >.text:hover::after{
+    border-right: 16px solid rgb(115, 91, 59);
+    transition: border-right 1500ms 200ms ease-in;
+}
