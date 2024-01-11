@@ -3,6 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <title>회원가입</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+        
+        <link href="../3회차/회원가입.css" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -11,7 +16,7 @@
         
         <main>
             <form>
-                <fieldset>
+                <fieldset class = "required">
                     <legend><strong>필수 입력 사항</strong></legend>
                     <label for="name">이름: </label>
                     <input type="text" id="name" name="name" size = 20 placeholder="실명을 입력해주세요.">
@@ -31,7 +36,7 @@
                     <br>
                     <button>가입하기</button>&nbsp;&nbsp;<button>취소</button>
                 </fieldset>
-                <fieldset>
+                <fieldset class = "select">
                     <legend><strong>선택 입력사항</strong></legend>
                     <h5>취미를 선택해주세요(중복선택가능)</h5>
                     <label>
