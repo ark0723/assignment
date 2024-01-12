@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>자바스크립트 소개</title>
+</head>
+<body>
+    <p>test1: hello world</p>
+    <p class = "comment">test2: hello world</p>
+    <p class = "comment" id = "third">test3: hello world</p>
+    <script>
+        // 입력 - 처리 - 출력
+        const txt1 = window.document.querySelector("p")
+        const txt2 = document.querySelector(".comment")
+        const txt3 = document.querySelector("#third")
+
+        console.log(txt1.textContent)
+        console.log(txt2.textContent)
+        console.log(txt3.textContent)
+
+        txt1.textContent = "text1: hello python world"
+        txt2.textContent = "text2: hello Javascript world"
+        txt3.textContent = "text3: hello mongo DB world"
+
+        console.log(2+3+"7")
+    </script>
+</body>
+</html>

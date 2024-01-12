@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>사용자 정보 입력받고 출력하기</title>
+    <style>
+        html{
+            margin: 0;
+            width: 100%;
+        }
+
+        button{
+            border: 1pt solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="background">
+        <button id="white">white</button>
+        <button id="black">black</button>
+    </div>
+
+    <script>
+        let bg = document.querySelector("html")
+        let white = document.querySelector('#white');
+        let black = document.querySelector('#black');
+
+        white.onclick = function(){
+            bg.style.backgroundColor = "white";
+            this.style.backgroundColor = "white";
+            black.style.backgroundColor ="gray";
+        };
+
+        black.onclick = function(){
+            bg.style.backgroundColor = "black";
+            this.style.backgroundColor = "black";
+            this.style.color = "white"
+            whilte.style.backgroundColor = "gray";
+        };
+    </script>
+</body>
+</html>

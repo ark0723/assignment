@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>사용자 정보 입력받고 출력하기</title>
+    <style>
+        h1{
+            font-weight: 900;
+            font-size: 30pt;
+        }
+
+        p{
+            font-size: 24pt;
+        }
+    </style>
+</head>
+<body>
+    <h1 id = "name"></h1>
+    <p id = "animal"></p>
+    <p id = "fruit"></p>
+
+    <script>
+        const nameElement = document.querySelector("#name")
+        let name = prompt("당신의 이름은?")
+        nameElement.textContent = `이름: ${name}`
+
+        const animalElement = document.querySelector("#animal")
+        let animal = prompt("당신이 가장 좋아하는 동물은 무엇인가요?")
+        animalElement.textContent = `좋아하는 동물: ${animal}`
+
+        const fruitElement = document.querySelector("#fruit")
+        let fruit = prompt("당신이 가장 좋아하는 과일은 무엇입니까?")
+        fruitElement.textContent = `좋아하는 과일: ${fruit}`
+
+
+
+    </script>
+</body>
+</html>
