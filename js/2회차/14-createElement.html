@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content ="IE=edge">
+    <title>createElement & appendChild</title>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        /*
+        append:  요소에 노드 객체 또는 문자열을 자식요소로 추가할 수 있음, return이 없음
+        appendChild: 요소에 노드 객체만을 추가할 수 있음, 자식노드를 return함
+        */
+        const div = document.getElementById("container")
+        
+        for(let i = 0; i < 5; i += 1){
+            /*box라는 객체를 생성해서 저장만 해두겠다*/
+            const box = document.createElement("div")
+            console.log(box)
+            box.style.color = "blue"
+            box.style.width = "200px"
+            box.style.height = "200px"
+            box.textContent = "Hello World"
+
+            /* div 태그 아래에 box를 위치하여 화면에 띄우겠다*/
+            div.appendChild(box)
+            /*
+            div.append("텍스트")
+            */
+        }
+
+    </script>
+</body>
+</html>

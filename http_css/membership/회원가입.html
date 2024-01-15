@@ -7,7 +7,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
         
-        <link href="../3회차/회원가입.css" rel="stylesheet">
+        <link href="회원가입.css" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -19,22 +19,27 @@
                 <fieldset class = "required">
                     <legend><strong>필수 입력 사항</strong></legend>
                     <label for="name">이름: </label>
-                    <input type="text" id="name" name="name" size = 20 placeholder="실명을 입력해주세요.">
+                    <input type="text" id="name" name="name" size = 20 
+                    autocomplete = "on" placeholder="실명을 입력해주세요.">
                     <br>
 
-                    <label for="ID">아이디: </label>
-                    <input type="text" id="ID" name="ID" size = 40 placeholder="숫자,알파벳을 조합해 6자리 이상 입력하세요.">
+                    <label for="ID" autocomplete = "on">아이디: </label>
+                    <input type="text" id="ID" name="ID" size = 40 
+                    autocomplete = "on" placeholder="숫자,알파벳을 조합해 6자리 이상 입력하세요.">
                     <br>
-                    <label for="pw">비밀번호: </label>
-                    <input type="password" id="pw" name="pw" size= 40 placeholder="대소문자,숫자를 조합하여 8자리 이상 설정하세요">
+                    <label for="pw" autocomplete = "on">비밀번호: </label>
+                    <input type="password" id="pw" name="pw" size= 40 
+                    autocomplete = "on" placeholder="대소문자,숫자를 조합하여 8자리 이상 설정하세요">
                     <br>
-                    <label for="email_address">이메일: </label>
-                    <input type="email" id="email_address" name="email_address" placeholder="예:홍길동@gmail.com">
+                    <label for="email_address" autocomplete = "on">이메일: </label>
+                    <input type="email" id="email_address" name="email_address" 
+                    autocomplete = "on" placeholder="예:홍길동@gmail.com">
                     <br>
-                    <label for="phone">휴대폰: </label>
-                    <input type="text" id="phone" name="phone" placeholder="'-'을 빼고 입력하세요.">
+                    <label for="phone" autocomplete = "on">휴대폰: </label>
+                    <input type="text" id="phone" name="phone" 
+                    autocomplete = "on" placeholder="'-'을 빼고 입력하세요.">
                     <br>
-                    <button>가입하기</button>&nbsp;&nbsp;<button>취소</button>
+                    <button type = "submit" id = "join">가입하기</button>&nbsp;&nbsp;<button>취소</button>
                 </fieldset>
                 <fieldset class = "select">
                     <legend><strong>선택 입력사항</strong></legend>
@@ -69,5 +74,6 @@
         <footer>
 
         </footer>
+        <script src="회원가입.js"></script>
     </body>
 </html>

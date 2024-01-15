@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content ="IE=edge">
+    <title>비교 연산자</title>
+</head>
+<body>
+</body>
+    <script>
+    /*
+    1. 대소비교 
+    2. 등가비교: 같다(==) 같지않다(!=) 완전히 같다(===) 완전히 같지 않다(!==)
+
+    ==는 추상적 같은 비교로써 자료형이 달라도 같다고 판단할 수 있음
+    ===는 엄격한 같음 비교로써 자료형과 데이터가 모두 일치해야만 같다고 판단한다. 
+    window.parseInt() or parseInt(): 문자형으로 쓰여진 숫자를 int형으로 변환
+    */
+
+    console.log("1" == 1); /*true*/
+    console.log("1" === 1); /*false*/
+    let age = window.parseInt(window.prompt("당신의 나이는?"))
+    console.log(age)
+    console.log(typeof age)
+    console.log(20 <= age)
+    console.log(20 === age)
+
+    let name = prompt("당신의 이름은?")
+    /*DOM에 코드를 추가할 때 사용- 진짜 html에 반영되는 것은 아님*/
+    document.write(name);
+    document.write("고아라" === name);
+    document.write(`사용자의 이름은 ${name}입니다<br>`)
+
+
+    </script>
+</html>
+

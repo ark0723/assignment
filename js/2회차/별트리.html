@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content ="IE=edge">
+    <title>별트리</title>
+</head>
+<body>
+    <div id = 'container'>
+        <h1>별트리 만들기</h1>
+    </div>
+    
+    <script>
+        const container = document.getElementById("container")
+        const first = document.createElement("h3")
+        first.textContent = "첫번째 트리"
+        container.append(first)
+
+        for (i=1; i <= 5; i++){
+            const p = document.createElement("p")
+            p.textContent = "*".repeat(i)
+            container.appendChild(p)
+        }
+
+        const second = document.createElement("h3")
+        second.textContent = "두번째 트리"
+        container.append(second)
+        for (i=1; i <= 5; i++){
+            const p = document.createElement("p")
+            p.textContent = "*".repeat(i)
+            container.appendChild(p)
+        }
+        for (i=5; i > 0; i--){
+            const p = document.createElement("p")
+            p.textContent = "*".repeat(i)
+            container.appendChild(p)
+        }
+
+        const third = document.createElement("h3")
+        third.textContent = "세번째 트리"
+        container.append(third)
+
+        let n = 5;
+        for (let i =1; i<=n; i++){
+            document.write('&nbsp'.repeat(n-i) + '*'.repeat(2*i -1)+"<br>")
+        }
+
+        for (let i = n-1; i > 0; i--){
+            document.write('&nbsp'.repeat(n-i) + '*'.repeat(2*i -1)+"<br>")
+        }
+        
+        /*
+        let n = 5
+        for (let i=1; i<=n; i++){
+            let star = ""
+            const p = document.createElement("p")
+            star += " ".repeat(n - i)
+            star += "*".repeat(2 * i - 1) 
+            p.textContent = star
+            container.appendChild(p)
+        }
+
+        let n = 5;
+        for (let i=1; i<=n; i++){
+            let star = "";
+            const p = document.createElement("p")
+
+            for (let j=1; j<= n-i; j++){
+                star = star + "&nbsp";
+            }
+
+            for (let j=1; j<=i; j++){
+                star = star + "*".repeat(2*j-1);
+            }
+            container.append(p)
+        }
+
+        let n = 5;
+        for (let i=1; i<=n; i++){
+
+            for (let j=1; j<= n-i; j++){
+                document.write('&nbsp')
+            }
+
+            for (let j=1; j<=(2*i-1); j++){
+                document.write("*");
+            }
+            document.write('<br>')
+        }
+
+*/
+
+    </script>
+</body>
+</html>

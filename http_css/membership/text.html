@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="kor">
+    <head>
+        <meta charset="UTF-8">
+        <title>회원가입</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+        
+    </head>
+    <body>
+
+        <form class="join_sheet">
+            <label for="name">이름: </label>
+            <input type="text" id="name" name="name" onchange="get()" 
+            size = 20 placeholder="실명을 입력해주세요.">
+            <br>
+            <label for="ID">아이디: </label>
+            <input type="text" id="ID" name="ID" size = 40 placeholder="숫자,알파벳을 조합해 6자리 이상 입력하세요.">
+            <br>
+            <button id = "join" onclick="get()">가입하기</button>&nbsp;&nbsp;<button>취소</button>
+        </form>
+        <script>
+            function get(){
+                let inputVal = document.getElementById("name").value;
+                let result = 
+                console.log(inputVal);
+                }
+
+        </script>
+    </body>
+</html>

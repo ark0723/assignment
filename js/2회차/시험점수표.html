@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content ="IE=edge">
+    <title>학점 계산기</title>
+</head>
+<body>
+    <div id = 'container'></div>
+    <script>
+
+        const h3 = document.createElement("h3")
+        const num = parseInt(prompt("기말고사 점수를 입력하세요."))
+        let grade;
+        if (num >= 90){
+            grade = "A"
+            h3.textContent = `나의 기말고사 점수는 ${num}점, 학점은 ${grade}!!!`
+        }
+        else if (num >= 80){
+            grade = "B"
+            h3.textContent = `나의 기말고사 점수는 ${num}점, 학점은 ${grade}!!!`
+        }
+        else if (num >= 70){
+            grade = "C"
+            h3.textContent = `나의 기말고사 점수는 ${num}점, 학점은 ${grade}!!!`
+        }
+        else if (num >= 60){
+            grade = "D"
+            h3.textContent = `나의 기말고사 점수는 ${num}점, 학점은 ${grade}!!!`
+        }
+        else {
+            grade = "E"
+            h3.textContent = `나의 기말고사 점수는 ${num}점, 학점은 ${grade}!!!`
+        }
+
+        container.appendChild(h3)
+
+    </script>
+</body>
+</html>

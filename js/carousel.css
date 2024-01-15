@@ -1,0 +1,20 @@
+*{
+    box-sizing: border-box;
+}
+
+.carousel-wrapper{
+    width: 800px;
+    height: 600px;
+    overflow: hidden;
+}
+
+.carousel-wrapper > .carousel{
+    display: flex;
+    transform: translate3d(0,0,0);
+    transition: transform 0.2s;
+}
+
+.carousel-wrapper > .carousel > imag{
+    width: 800px;
+    height: 600px;
+}

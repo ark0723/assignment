@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content ="IE=edge">
+    <title></title>
+</head>
+<body>
+    <script>
+        /*
+        function hello(){
+            let x = 10;
+            if (x > 5){
+                x = 7;
+            }
+            alert(x);
+        }
+
+        hello()
+        */
+
+        // for 문 이용하여 1~1000 정수 중 3의 배수 출력
+        for (let i = 1; i<10; i++){
+            if (i % 3 == 0){
+                console.log(i)
+            }
+        }
+
+        //1부터 10까지 숫자를 출력하다가 5을 만나면 반복문을 종료하는 프로그램
+        for (let i=1; i<=10; i++){
+            console.log(i);
+            if (i===5){
+                break;
+            }
+        }
+
+                //1부터 10까지 숫자를 출력하다가 5을 만나면 반복문을 종료하는 프로그램
+        for (let i=1; i<=10; i++){
+            if (i===5){
+                continue;
+            }
+            console.log(i)
+        }
+
+        //whlie문을 이용, 1~50까지 숫자 중에서 짝수인 경우는 건너띄고, 다음 반복을 이어가며 홀수의 총햡을 구하는 코드
+        let i = 0
+        let sum = 0
+
+        while (i <= 999){
+            i++
+
+            if (i % 2 === 0){
+                continue
+            }
+
+            sum += i
+        }
+
+        console.log(sum)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content ="IE=edge">
+    <title>반복문 for</title>
+</head>
+<body>
+    <script>
+        /*
+        for(초기식; 조건식; 반복식){
+            //조건이 true일 경우 수행할 코드
+        }
+
+        초기식에서 변수 i를 1로 초기화했다. i가 5보다 작거나 같으면 반복할 것이며, 
+        동작이 수행될때 마다 i는 1씩 증가할 것이다. 최종적으로 5회 반복을 수행하게 된다. 
+        */
+
+        for(let i = 1; i <=5 ; i += 1){
+            document.write(`반복 ${i}회!<br>`)
+        }
+
+        /*
+        while(조건){}
+
+            while(prompt("set number") != 0){
+                document.write("get number!<br>")
+        }
+        */
+       let i = 0;
+        while (i<5){
+            document.write(`반복중이다! ${i+1}번째!<br>`)
+            i += 1
+        }
+
+        while(confirm("반복 실행 할까요?")){
+            document.write("출력")
+        }
+
+    </script>
+</body>
+</html>
