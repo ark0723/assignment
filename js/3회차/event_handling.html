@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <title>함수 만들기</title>
+    </head>
+    <body>
+        <button id = "span">SPAN</button>
+        <button id = "strong">STRONG</button>
+        <button id = "mark">MARK</button>
+        <hr>
+
+        <script>
+        /*
+        이벤트 핸들러: 이벤트가 발생되면 실행될 코드 블록, 주로 함수가 이 역할을 수행
+        이벤트 처리할 대상: 타겟 선택, 이벤트 핸들러 속성에 이벤트 핸들러 ㅐ입
+        타겟.on입벤트 = 이벤트핸들러함수 이름
+
+            const handleClick = function(){
+                window.alert("welcome!")
+            }
+
+            const button = document.querySelector("button")
+            button.onclick = handleClick 
+            
+        addEventListener 메소드: 이벤트속성(onclick, onkeydown 등등)을 통해
+        이벤트 핸들러 등록하는것보다 편리함 1. 추가한 이벤트 핸들러 제거 기능 2. 다수의 핸들러 등록 가능
+        addEventListner(이벤트명, 이벤트 핸들러)
+        이벤트 객체: 추가적인 기능과 정보를 제공하기 위해 이벤트 핸들러에 자동을 전달되는 데이터. 이를
+        활용하기 위해서 이벤트 핸들러 함수에 매개 변수를 추가하여 이벤트 발생 시마다 전달받을 수 있도록
+        
+
+        click 이벤트가 발생하면 함수를 호출하겠다 + 이때 자동으로 전달되는 이벤트 객체를 
+        매개변수 event에 대입하겠다!
+        target.addEventListener('clock', function(event){}) 
+        */
+        
+            const spanBtn = document.getElementById("span")
+            const strongBtn = document.getElementById("strong")
+            const markBtn = document.getElementById("mark")
+            /*
+            function handleClick(){
+                alert("click!")
+            }
+
+            strongBtn.onclick = handleClick
+            spanBtn.onclick = function(){
+                const span = document.createElement("span")
+                span.textContent = "new created span tag"
+                document.body.append(span)
+            }
+
+            markBtn.addEventListener("click", function(){
+            const mark = document.createElement("mark")
+            mark.textContent = "new created mark tag"
+            document.body.append(mark)
+            })
+`           */
+
+            const handleClick = function(event){
+                //console.log(event)
+                if (event.target.id == "span"){
+                    const span = document.createElement("span")
+                    span.textContent = "new created span tag"
+                    document.body.append(span)
+                }
+
+                else if (event.target.id == "strong"){
+                    const strong = document.createElement("strong")
+                    strong.textContent = "new created strong tag"
+                    document.body.append(strong)
+                }
+
+                else if (event.target.id == "mark"){
+                    const mark = document.createElement("mark")
+                    mark.textContent = "new created mark tag"
+                    document.body.append(mark)
+                }
+            }
+
+            spanBtn.addEventListener("click", handleClick)
+            strongBtn.addEventListener("click", handleClick)
+            markBtn.addEventListener("click", handleClick)
+
+
+        </script>
+    </body>
+    </html>

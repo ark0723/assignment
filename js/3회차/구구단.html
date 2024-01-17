@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <title>구구단</title>
+    </head>
+    <body>
+        <p>구구단표</p>
+        <script>
+            
+            let txt1;
+            let txt2;
+
+            for (let i=2; i<10; i++){
+                txt1 = `${i}단`
+                document.write(txt1 + "<br>") 
+                for (let j=1; j<10; j++){
+                    result = i * j
+                    txt2 = `${i} x ${j} = ${result}`
+                    document.write(txt2 + "<br>")
+                }
+
+            }
+        </script>
+    </body>
+    </html>

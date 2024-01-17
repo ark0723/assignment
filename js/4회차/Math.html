@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0">
+        <title>math</title>
+    </head>
+    <body> 
+        <button id = "draw">추첨</button>
+        <p id = "number"></p>    
+        <script>
+            //Math : 수와 관련된 속성과 메소드를 가진 내장객체
+            const button = document.getElementById("draw")
+            const p = document.getElementById("number")
+            //0~1 사이의 랜덤 숫자 Math.random(), 소수점 이하 제거 Math.floor()
+            let n = Math.random()
+            const Max_num = 100
+            const Min_num = 1
+            console.log(Math.floor(n*Max_num) + Min_num)
+
+            button.addEventListener("click", function(){
+                p.textContent = Math.floor(Math.random()*Max_num + Min_num)
+            })
+
+
+        </script>
+    </body>
+    </html>

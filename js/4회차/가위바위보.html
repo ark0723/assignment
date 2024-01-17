@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <title>Rock, Paper, Scissors</title>
+    </head>
+    <body>
+        <h1>가위바위보 게임</h1>
+        <p>가위, 바위, 보 중 하나를 입력하세요:</p>
+        <div id = "game">
+            <input type = "text" id="input">
+            <button id = "result">결과 확인</button>
+            <h3 id = display></h3>
+        </div>
+
+        <script>
+            const game = document.getElementById('game')
+            const input = document.getElementById("input")
+            const btn = document.getElementById("result")
+            const display = document.getElementById("display")
+
+            rpc = ["가위", "바위","보"]
+
+            btn.addEventListener("click", function(){
+                // random number (0~2)
+                rn = Math.floor(Math.random()*rpc.length) 
+                user_choice = input.value
+                console.log(user_choice)
+                com_choice = rpc[rn]
+                console.log(com_choice)
+
+                if (user_choice === "가위"){
+                    if (com_choice === "가위"){
+                        display.textContent = `당신의 선택:${user_choice}/컴퓨터의 선택:${com_choice}/결과: 비겼습니다!`
+                    }
+                    else if (com_choice === "바위"){
+                        display.textContent = `당신의 선택:${user_choice}/컴퓨터의 선택:${com_choice}/결과: 졌습니다!`
+                    }
+                    else {
+                        display.textContent = `당신의 선택:${user_choice}/컴퓨터의 선택:${com_choice}/결과: 이겼습니다!`
+                    }
+                }
+                else if (user_choice ==="바위"){
+                    if (com_choice === "가위"){
+                        display.textContent = `당신의 선택:${user_choice}/컴퓨터의 선택:${com_choice}/결과: 이겼습니다!`
+                    }
+                    else if (com_choice === "바위"){
+                        display.textContent = `당신의 선택:${user_choice}/컴퓨터의 선택:${com_choice}/결과: 비겼습니다!`
+                    }
+                    else {
+                        display.textContent = `당신의 선택:${user_choice}/컴퓨터의 선택:${com_choice}/결과: 졌습니다!`
+                    }
+                }
+                else {
+                    if (com_choice === "가위"){
+                        display.textContent = `당신의 선택:${user_choice}/컴퓨터의 선택:${com_choice}/결과: 졌습니다!`
+                    }
+                    else if (com_choice === "바위"){
+                        display.textContent = `당신의 선택:${user_choice}/컴퓨터의 선택:${com_choice}/결과: 이겼습니다!`
+                    }
+                    else {
+                        display.textContent = `당신의 선택:${user_choice}/컴퓨터의 선택:${com_choice}/결과: 비겼습니다!`
+                    }
+                }
+            })
+
+        </script>
+    </body>
+    </html>

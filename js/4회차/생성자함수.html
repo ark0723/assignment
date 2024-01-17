@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <title>객체를 만드는 생성자</title>
+    </head>
+    <body>
+        <script>
+            //생성자: 함수인데 객체를 생성할 목적으로 정의하는 함수. 설계도
+            //자바스크립트에서 기본으로 제공하지 않는 데이터 유형을 직접 만들 수 있다.
+
+            function Singer(name, member){
+                this.name = name
+                this.member = member
+                /*
+                this.singing = function(){
+                    console.log("니 이름 불러나봐~ 나 술에 취해서")
+                }
+                */
+            }
+
+            ses = new Singer("S.E.S.", "바다, 유진, 슈")
+            console.log(ses.name)
+            console.log(ses.member)
+        </script>
+    </body>
+    </html>

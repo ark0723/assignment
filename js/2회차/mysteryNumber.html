@@ -33,33 +33,48 @@
     <div id = "container">
         <h1> Mystery Number 맞추기</h1>
         <h3>1부터 100 사이의 숫자를 입력하세요!</h3>
-        <div id ="form">
-            <input type="text" id ="number">
-            <button id = "btn" type="submit">뚜둥!</button>
-            <p id="txt"></p>
-        </div>
+        <input type="text" id ="input">
+        <button id = "btn">뚜둥!</button>
+        <div id = "hint"></div>
     </div>
 
     <script>
         //0~100사이의 임의의 정수 
+        //const answer = 50(test)
         const answer = Math.floor(Math.random()*100)
-        const number = parseInt(document.getElementById("number").value);
-        const button = document.getElementById("button")
-        
+        const input = document.getElementById("input")
+        const btn = document.getElementById("btn")
+        const hint = document.getElementById("hint")
 
-        const guess = () =>{
-            if (number === answer){
-                alert("정답입니다!")
-            }else if (number > answer){
-                text = document.getElementById("txt")
-                text.textContent = "힌트: 숫자가 커요. 줄여볼까요?"
-            }else {
-                text = document.getElementById("txt")
-                text.textContent = "힌트: 숫자가 작아요. 조금만 높여보세요."
+        function handleReaction(){
+            const guess = Number(input.value)
+            
+            if (answer > guess){
+                console.log()
+                hint.textContent = "힌트: 숫자가 작아요. 조금 더 높여보세요."
             }
-        };
+            else if (answer < guess){
+                hint.textContent = "힌트: 숫자가 커요. 조금만 줄요볼까요?"
+            }
+            else {
+                alert("정답입니다.")
+                // reset
+                reset_btn = document.createElement("button")
+                reset_btn.style.backgroundcolor = "blue"
+                reset_btn.textContent = "다시하기"
+                container.append(reset_btn)
 
-        button.addEventListener("click", guess);
+                reset_btn.onclick = handleReset
+            }
+        }
+
+
+        function handleReset(){
+            input.value = ""
+        }
+
+        btn.onclick = handleReaction;
+            
     </script>
 </body>
 

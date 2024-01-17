@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0">
+        <title>이미지 멈춰!</title>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+
+            .screen{
+                width: 800px;
+                height: 600px;
+                overflow: hidden;
+            }
+
+            .screen > img{
+                width: 800px;
+                height: 600px;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div id = "screen">
+            <img src = "../images/busan.jpg" id = "main" alt = "부산 광안대고">
+        </div>
+        <button id = "stop">stop</button>
+
+        <script>
+        
+            let main_img = document.getElementById("main")
+            let btn = document.getElementById("stop")
+
+            let imgArr = ["../images/busan.jpg", "../images/seoul.jpg", "../images/jeju.jpg"]
+            let idx = 0
+
+            function changeImg(){
+                if (idx >= imgArr.length){
+                    idx = 0
+                }
+                main_img.setAttribute("src", imgArr[idx])
+                idx += 1
+            }
+
+            timeout = setInterval(changeImg(), 3000)
+
+            btn.addEventListener("click", function(){
+                clearInterval(timeout)
+            })
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <title>time and date</title>
+    </head>
+    <body>
+        <h3 class = "clock"></h3>
+        <script>
+            //gain korean time  from UTC
+            let now = new Date() // current time and date
+            let utc = now.getTime() + (now.getTimezoneOffset()*60*1000)
+            //console.log(utc)
+            //한국시간은 UTC보다 9시간 빠름(millisecond 단위 계산)
+            const koreaTimeDiff = 9*60*60*1000
+            let koreaTime = new Date(utc + koreaTimeDiff)
+            // console.log(koreaTime)
+
+            const clockEl = document.querySelector(".clock")
+
+            function getTimeDate(){
+                let year = koreaTime.getFullYear()
+                let month = koreaTime.getMonth()
+                let dates = koreaTime.getDate()
+                let day = koreaTime.getDay()
+
+                let hour = koreaTime.getHours()
+                let min = koreaTime.getMinutes()
+                let second = koreaTime.getSeconds()
+
+
+
+                
+                clockEl.innerText = 
+                `현재시간: ${day} ${month} ${dates} ${year} ${hour}:${min}:${second} GMT+0900 (한국 표준시)`
+            }
+
+            function realTime(){
+                //1000 millisecond = 1 second
+                getTimeDate()
+                setInterval(getTimeDate, 1000)
+            }
+
+            realTime()
+            
+
+
+        </script>
+    </body>
+    </html>

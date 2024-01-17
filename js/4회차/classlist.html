@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0">
+        <title>classlist</title>
+        <style>
+            .beautiful{
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <img src = "../images/busan.jpg" alt ="광안대교 전경">
+        <br>
+        <button id = "add">ADD STYLE</button>
+        <button id = "remove">REMOVE STYLE</button>
+        <button id = "toggle">TOGGLE STYLE</button>
+        
+        <script>
+            const img = document.querySelector("img")
+            const addBtn = document.getElementById("add")
+            const removeBtn = document.getElementById("remove")
+            const toggleBtn = document.getElementById("toggle")
+
+            
+            addBtn.addEventListener("click", function(){
+                img.classList.add("beautiful")
+                console.log(img.classList.contains("beautiful"))
+            })
+            
+            removeBtn.addEventListener("click", function(){
+                img.classList.remove("beautiful")
+                console.log(img.classList.contains("beautiful"))
+            })
+
+            //toggle: 있으면 제거하고, 없으면 추가해라(on/off)
+            toggleBtn.addEventListener("click", function(){
+                img.classList.toggle("beautiful")
+                console.log(img.classList.contains("beautiful"))
+            })
+
+        </script>
+    </body>
+    </html>

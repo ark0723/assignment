@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href = "calculator.css" rel="stylesheet">
+        <title>계산기</title>
+    </head>
+    <body>
+        <!--
+            https://velog.io/@jhyun_k/js-calculator
+            https://bman-note.tistory.com/7
+        -->
+        <h1>Click My Calculator</h1>
+        <div id = "container">
+            <div class = "display">
+                <div class = 'input'></div>
+            </div>
+            <div class = "buttons">
+                <button class='numBtn'>7</button>
+                <button class='numBtn'>8</button>
+                <button class='numBtn'>9</button>
+                <button data-type='operator' class='operator'>x</button>
+                
+                <button class='numBtn'>4</button>
+                <button class='numBtn'>5</button>
+                <button class='numBtn'>6</button>
+                <button data-type='operator' class='operator'>/</button>
+
+                <button class='numBtn'>1</button>
+                <button class='numBtn'>2</button>
+                <button class='numBtn'>3</button>
+                <button data-type='operator' class='operator'>-</button>
+
+                <button data-type="C" class='c'>C</button>
+                <button class='numBtn'>0</button>
+                <button data-type='operator' class='operator'>+</button>
+                <button data-type='result' class='result'>=</button>
+            </div>
+        </div>
+        <script>
+            const buttons = document.querySelectorAll("button")
+            const operators = document.querySelectorAll(".operator")
+            const display = document.querySelector(".input")
+            const numBtn = document.querySelectorAll(".numBtn")
+
+            let operatorOn = "" //operator 받기
+            let prev = ""//이전 연산값
+            let current = ""//현재 연산값
+
+            // 함수 calculate
+            function calculate(num1, operator, num2){
+                let result = 0;
+                if (operator === "x"){
+                    result = Number(num1) * Number(num2)
+                }
+
+                else if(operator ==="/"){
+                    if(num2 === "0"){
+                        result = Infinity
+                    } 
+                    
+                    result = Number(num1) / Number(num2)
+                }
+
+                else if(operator ==="-"){
+                    result = Number(num1) - Number(num2)
+                }
+
+                else{
+                    result = Number(num1) + Number(num2)
+                }
+
+                return String(result)
+            }
+            // 각각의 element에 이벤트리스터를 등록하겠다
+            buttons.forEach(function(button){
+                button.addEventListener("click", function(event){
+                    name = event.target.classList[0] // class name of a button
+                    content = event.target.innerText // 0~9, "+", "-", "/","*"
+
+                    if (name === "operator"){
+                        //click operator
+                        operatorOn = content;
+                        prev = display.textContent;
+                        display.textContent = "";
+                    }
+
+                    if (name === "numBtn"){
+                        // display상에 아무것도 입력된게 없고, 연산자도 누르지 않은 경우
+                        if (display.textContent === "" && operatorOn ===""){
+                            display.textContent = content;
+                            prev = display.textContent
+                        }
+                        else if (display.textContent !=="" && operatorOn ===""){
+                            display.textContent += content
+                            prev = display.textContent
+                        }
+                        else if (display.textContent ==="" && operatorOn !==""){
+                            display.textContent += content
+                            current = display.textContent
+                        }
+                        else if(display.textContent !== "" && operatorOn !== ""){
+                            display.textContent += content
+                            current = display.textContent
+                        }
+                        console.log(display.value)
+                    }
+
+                    if (name ==="c"){
+                        //reset
+                        display.textContent = ""
+                        prev = ""
+                        operatorOn = ""
+                        current = ""
+                    }
+
+                    if (name == "result"){
+                        display.textContent = calculate(prev, operatorOn, current)
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>

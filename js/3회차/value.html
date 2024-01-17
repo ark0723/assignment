@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <title>value 속성</title>
+    </head>
+    <body>
+        <input id = "talk">
+        <input id = "push" type = "button" value = "push">
+        <!-- <form action = "서버주소">-->
+        <form id = "form">
+            <input name = "name">
+            <input name = "nick">
+            <input type = "submit">
+        </form>
+
+        <script>
+            /*
+            const input = document.getElementById("talk")
+            const button = document.getElementById("push")
+
+            input.addEventListener("keyup", function(e){
+                console.log(e.target.value)
+            })
+
+            button.addEventListener('click', function(){
+                //alert(input.value)
+                const p = document.createElement("p")
+                p.textContent = input.value
+                document.body.append(p)
+            })
+            */
+
+            const form = document.getElementById("form")
+            form.addEventListener("submit", function(e){
+                //default: submit 하면 새로고침된다. 우리는 현재 연습중이니까 내용을 그대로 보이고 싶다
+                e.preventDefault() 
+                const p = document.createElement("p")
+                p.textContent = `${e.target.name.value}의 별명은 ${e.target.nick.value}`
+                document.body.append(p)
+            })
+        </script>
+    </body>
+    </html>
