@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>비동기통신</title>
+
+    </head>
+    <body>
+        <button id = "push">PUSH</button>
+        <hr>
+        <img src = "" alt = "dog">
+        <script>
+            //open source: https://dog.ceo/api/breeds/image/random
+            // 요청을 하나 생성
+            const rqs = new XMLHttpRequest()
+            const button = document.getElementById("push")
+
+            button.addEventListener("click", function(){
+                rqs.open("get","https://dog.ceo/api/breeds/image/random")
+                rqs.addEventListener("load", function(){
+                    // 응답을 보내서 응답상태가 load( = success)일때라면 다음과 같이 실행하겠다. 
+                    // 정한 뒤 요청을 보내야함 
+                    // 성공시 받는 응답: 강아지 사진(rqs.response)
+                    const result = JSON.parse(rqs.response)
+                    const image = document.querySelector("img")
+                    image.src = result.message
+                }) 
+                rqs.send() // 요청 보내기
+            })
+
+            /*
+            rqs.open("get","https://dog.ceo/api/breeds/image/random")
+            rqs.addEventListener("load", function(){
+                //alert("!")
+                console.log(JSON.parse(rqs.response))
+            }) // 응답을 보내서 응답상태가 success일때라면 다음과 같이 실행하겠다. 정한 뒤 요청을 보내야함 
+            rqs.send() // 요청 보내기
+            */
+
+        </script>
+    </body>
+    </html>ˆ

@@ -10,24 +10,50 @@
         <title>stopwatch</title>
     </head>
     <body>
-        <!--https://stickode.tistory.com/230-->
+        <!--https://im-developer.tistory.com/53-->
+
         <h1>스톱워치</h1>
-        <div id = "elapsed">경과시간: 0:0:00</div>
+        <div id = "display">00:00:00</div>
         <div id = buttons>
             <button id = "start">시작</button>
             <button id = "stop">중지</button>
         </div>
         <script>
-            startBtn = document.getElementById("start")
-            stopBtn = document.getElementById("stop")
-            elapsed = document.getElementById("elapsed")
+            const startBtn = document.getElementById("start");
+            const stopBtn = document.getElementById("stop");
+            const display = document.getElementById("display");
+            
+            let time = 0;
+            let timerID = null;
 
-            startBtn.addEventListner("click", function(){
-                timeNow = 
-                elapsed.innerText = "경과시간: "
+            function formatTime(time){
+                let min = Math.floor(time/60)
+                let hour = Math.floor(time/3600)
+                let sec = time % 60
 
-            })
+                hour = String(hour).padStart(2,"0")
+                min = String(min).padStart(2, "0")
+                sec = String(sec).padStart(2,"0")
 
+                return `${hour}:${min}:${sec}`
+            }
+
+            // console.log(formatTime(100)) ->  00: 01: 40
+
+            function start(){
+                timerID = setInterval(function(){
+                    time += 1;
+                    display.innerText = formatTime(time)
+                },1000);
+            };
+
+            function stop(){
+                clearInterval(timerID);
+                time = 0;
+            }
+            
+            startBtn.addEventListener("click", start);
+            stopBtn.addEventListener("click", stop);
 
         </script>
     </body>

@@ -10,46 +10,30 @@
         <title>time and date</title>
     </head>
     <body>
-        <h3 class = "clock"></h3>
+        <p id = "now"></p>
+
         <script>
-            //gain korean time  from UTC
-            let now = new Date() // current time and date
-            let utc = now.getTime() + (now.getTimezoneOffset()*60*1000)
-            //console.log(utc)
-            //한국시간은 UTC보다 9시간 빠름(millisecond 단위 계산)
-            const koreaTimeDiff = 9*60*60*1000
-            let koreaTime = new Date(utc + koreaTimeDiff)
-            // console.log(koreaTime)
-
-            const clockEl = document.querySelector(".clock")
-
-            function getTimeDate(){
-                let year = koreaTime.getFullYear()
-                let month = koreaTime.getMonth()
-                let dates = koreaTime.getDate()
-                let day = koreaTime.getDay()
-
-                let hour = koreaTime.getHours()
-                let min = koreaTime.getMinutes()
-                let second = koreaTime.getSeconds()
-
-
-
-                
-                clockEl.innerText = 
-                `현재시간: ${day} ${month} ${dates} ${year} ${hour}:${min}:${second} GMT+0900 (한국 표준시)`
-            }
-
-            function realTime(){
-                //1000 millisecond = 1 second
-                getTimeDate()
-                setInterval(getTimeDate, 1000)
-            }
-
-            realTime()
             
+            const button = document.getElementById("stop")
 
+            const days = ["일", "월", "화", "수", "목", "금", "토"]
 
+            let timerID;
+            timerID = setInterval(function(){
+                const p = document.getElementById("now")
+                const now = new Date()
+                let year = now.getFullYear()
+                let month = now.getMonth() + 1
+                let date = now.getDate()
+                let day = days[now.getDay()]
+                let hour = now.getHours()
+                let min = now.getMinutes()
+                let sec = now.getSeconds()
+
+                p.textContent = `현재시간: ${year}년 ${month}월 ${date}일 ${day}요일
+                ${hour}:${min}:${sec}`
+
+            },1000)
         </script>
     </body>
     </html>

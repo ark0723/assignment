@@ -34,24 +34,26 @@
 
         <script>
         
-            let main_img = document.getElementById("main")
-            let btn = document.getElementById("stop")
+            const mainImg = document.getElementById("main")
+            const btn = document.getElementById("stop")
 
-            let imgArr = ["../images/busan.jpg", "../images/seoul.jpg", "../images/jeju.jpg"]
+            const imgArr = ["../images/busan.jpg", "../images/seoul.jpg", "../images/jeju.jpg"]
             let idx = 0
 
             function changeImg(){
                 if (idx >= imgArr.length){
                     idx = 0
                 }
-                main_img.setAttribute("src", imgArr[idx])
+                mainImg.src = imgArr[idx]
                 idx += 1
             }
 
-            timeout = setInterval(changeImg(), 3000)
+
+
+            timeID = setInterval(changeImg, 2000)
 
             btn.addEventListener("click", function(){
-                clearInterval(timeout)
+                clearInterval(timeID)
             })
         </script>
     </body>

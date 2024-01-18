@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JSON</title>
+
+    </head>
+    <body>
+        <script>
+            const meal = {
+                what: "제육볶음",
+                who: "신선영",
+                when: "어제 점심"
+            }
+            console.log(meal)
+            console.log(typeof meal)
+            //JSON형식: 자바스크립트 객체 리터럴을 문자열 형식으로 변환한것
+            // 객체리터럴 -> JSON
+            meal_json = JSON.stringify(meal)
+            console.log(meal_json)
+            console.log(typeof meal_json)
+            // JSon -> 객체 리터럴
+            // JSON.parse()
+            meal_obj = JSON.parse(meal_json)
+            console.log(typeof meal_obj)
+        </script>
+    </body>
+    </html>

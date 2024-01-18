@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>견종정보페이지</title>
+        <link href = "breeds.css" rel = "stylesheet">
+
+    </head>
+    <body>
+        <div id = "container">
+            <header class = "header" id = "header">
+                <div class = "header-search">
+                    <input id = "filter-text">
+                    <button id = "filter-button">필터링</button>
+                </div>
+                <select id = "filter-select">
+                    <option value="">all</option>
+                </select>
+                <button id = "reset">reset</button>
+            </header>
+            <main class = "main" id = "main">
+                <div class = "images" id = "images"></div>
+                <div class = "more" id = "more">MORE</div>
+                <div class = "tothetop" id = "tothetop">TOP</div>
+            </main>
+        </div>
+        <script src = "breeds.js"></script>
+    </body>
+    </html>

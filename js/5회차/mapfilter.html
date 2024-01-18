@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>map and filter</title>
+
+    </head>
+    <body>
+        <div id = "container"></div>
+        <script>
+            const container = document.getElementById("container")
+            const crops = ["rice", "corn", "tomato", "eggplant", "pepper","potato"]
+
+            crops.forEach(function(item){
+                console.log(item+ " 맛있다")
+                return item + " 맛있다" // forEach에서는 안 먹힘
+            })
+
+            let result = crops.map(function(item){
+                // return item + " 맛있다"
+                const h2 = document.createElement("h2")
+                h2.textContent = `맛 좋은 ${item}`
+                container.append(h2)
+                return h2
+            })
+            console.log(result)
+
+            result2 = crops.filter(function(item){
+                //'e'가 포함된 아이템만 보겠다. -1이면 포함되지 않음을 의미
+                return (item.indexOf("e") !== -1) 
+            })
+            console.log(result2)
+        </script>
+    </body>
+    </html>

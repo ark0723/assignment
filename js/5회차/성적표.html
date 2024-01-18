@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>떡잎 유치원 성적표</title>
+    </head>
+    <body>
+        <h1>떡잎 유치원 멀리뛰기 결과</h1>
+        <div id = "container"></div>
+        <h2 id = "moreN"></h2>
+        <h2 id = "sorting"></h2>
+        <script>
+            const student = [{이름:"짱구", 점수: 45}, {이름:"맹구", 점수: 75}, {이름:"철수", 점수: 95}, {이름:"훈이", 점수: 50},
+            {이름:"유리", 점수: 68},{이름:"수지", 점수: 86}] 
+
+            const moreN = document.getElementById("moreN")
+            const sorting = document.getElementById("sorting")
+            let N = 50;
+
+            function makeNameList(studentList){
+                let nameList = []
+                studentList.forEach(function(student){
+                    nameList.push(student.이름)
+                })
+                return nameList
+            }
+            //점수가 N보다 높은 학생 객체들의 리스트
+            let studentThanN = student.filter(function(each){return (each.점수 > N)})
+            // 점수에 따라 내림차순정렬한 학생 객체들의 리스트
+            function sort(array){
+                let studentByNum = array.sort(function(a, b){
+                if (a.점수 > b.점수) return -1; // 큰수이면 앞으로 간다 -> 내림차순정렬
+                if (a.점수 < b.점수) return 1; 
+                return 0; 
+                })
+
+                return studentByNum
+            }
+
+
+            moreN.textContent = `${N}점이 넘는 사람: ${makeNameList(studentThanN)}`
+            studentByNum = sort(studentThanN)
+            sorting.textContent = `${N}점이 넘는 사람 중 점수가 높은 순 나열: ${makeNameList(studentByNum)}`
+
+
+        </script>
+    </body>
+    </html>
