@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        >
+        <title>Countdown timer</title>
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+
+            html, body{
+                width: 100%;
+                margin: 0;
+                
+            }
+
+            #container{
+                width: 100%;
+                max-width: 640pt;
+                height: 480pt;
+                padding: 30pt 0 0;
+                margin: auto;
+                border-radius: 10pt;
+                background-color: blanchedalmond;
+            }
+
+            #title{
+                font-size: 32pt;
+                text-align: center;
+            }
+            img{
+                width: 640px;
+                height: 350px;
+                margin: 10px 100px 0;
+            }
+            #display{
+                width: 400pt;
+                margin: auto;
+                text-align: center;
+                padding: 50pt 0 0;
+                font-size: 18pt;
+            }
+
+            #after{
+                width: 400pt;
+                margin: auto;
+                text-align: center;
+                padding: 50pt 0 0;
+                font-size: 18pt;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div id = "container">
+            <div id = "title">2024년 설날 카운트 다운</div>
+            <div id = "main">
+                <img src = "../images/newyeargreeting.jpg">            
+                <div id = "display"></div>
+                <div id = "after"></div>
+            </div>
+        </div>
+        <script>
+            const display = document.getElementById("display");
+            const after = document.getElementById("after")
+            // 기준시간 2024년 2월 10일
+            const setTime = new Date(2024,1,10).getTime()
+
+            function formatTime(time){
+                // time unit: milliseconds
+                let sec = Math.floor(time/1000)
+                let min = Math.floor(time/(60*1000))
+                let hour = Math.floor(time/(60*60*1000))
+                let days = Math.floor(time/(24*60*60*1000))
+
+                sec = sec % 60
+                min = min % 60
+                hour = hour % 24
+
+                day = String(days)
+                hour = String(hour).padStart(2,"0")
+                min = String(min).padStart(2, "0")
+                sec = String(sec).padStart(2,"0")
+
+                return `${days}일 ${hour}시간 ${min}분 ${sec}초 남았습니다.`
+            }
+
+            //console.log(formatTime(timeLeft))
+
+            window.addEventListener("load",function(){
+                countDown()
+            })
+
+            // test code: let timeLeft = 10
+            function countDown(){
+                timeID = setInterval(function(){
+                    let timeLeft = setTime - (new Date().getTime())
+                    // test code: timeLeft -=1
+                    if (timeLeft === 0){
+                        clearInterval(timeID)
+                        display.innerHTML = ""
+                        after.textContent = "2024년 즐거운 설 되세요. 새해복 많이 받으세요!"
+                    }
+                    else{display.innerText = formatTime(timeLeft)}
+                    
+                },1000);
+            };
+
+        </script>
+    </body>
+    </html>
