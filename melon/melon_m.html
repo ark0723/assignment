@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melon Chart</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(215, 247, 236);
+            padding-top: 11.751rem;
+            margin: 0;
+        }
+
+        .container{
+            width: 100%;
+        }
+
+        #header{
+            position: fixed;
+            top: 0;
+            margin:0;
+            width: 100%;
+            z-index: 100;
+            background-color: beige;
+        }
+
+        th, td{
+            padding: 5px;
+            text-align: center;
+        }
+        #melon_table{
+            border: 0;
+            width: 100%;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div id = "header">
+            <h1 style="text-align:center; padding-top:50px;">Melon TOP 50</h4>
+            <p id="time"></p>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered" id="melon_table">
+                <thead>
+                    <tr>
+                        <th>순위</th>
+                        <th>이미지</th>
+                        <th>제목</th>
+                        <th>가수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="./melon.js"></script>
+</body>
+</html>
