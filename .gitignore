@@ -5,6 +5,19 @@
 # ide config file
 .dbeaver-data-sources*.xml
 
+###VSCODE ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### .DS_Store ###
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
+
 ### Django ###
 *.log
 *.pot
