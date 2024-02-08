@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
+    crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>practice</h1>
+    <!--네비게이션 바-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+    <!--form: category, text input, button-->
+    <form class="row gy-2 gx-3 align-items-center">
+        <div class="col-auto">
+            <label class="visually-hidden" for="autoSizingSelect">Preference</label>
+            <select class="form-select" id="autoSizingSelect">
+            <option selected>카테고리</option>
+            <option value="1">Top</option>
+            <option value="2">Bottom</option>
+            <option value="3">Shoes</option>
+            <option value="3">Accessory</option>
+            </select>
+        </div>
+
+        <div class="col-auto">
+            <label class="visually-hidden" for="autoSizingInput">Name</label>
+            <input type="text" class="form-control" id="autoSizingInput" placeholder="제품명을 입력해주세요.">
+        </div>
+
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">조회</button>
+        </div>
+    </form>
+    <!--table with checkbox-->
+    <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Select Day</th>
+                  <th scope="col">Article Name</th>
+                  <th scope="col">Author</th>
+                  <th scope="col">Words</th>
+                  <th scope="col">Shares</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                        <label class="custom-control-label" for="customCheck1">1</label>
+                    </div>
+                  </td>
+                  <td>Bootstrap 4 CDN and Starter Template</td>
+                  <td>Cristina</td>
+                  <td>913</td>
+                  <td>2.846</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                        <label class="custom-control-label" for="customCheck2">2</label>
+                    </div>
+                  </td>
+                  <td>Bootstrap Grid 4 Tutorial and Examples</td>
+                  <td>Cristina</td>
+                  <td>1.434</td>
+                  <td>3.417</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                        <label class="custom-control-label" for="customCheck3">3</label>
+                    </div>
+                  </td>
+                  <td>Bootstrap Flexbox Tutorial and Examples</td>
+                  <td>Cristina</td>
+                  <td>1.877</td>
+                  <td>1.234</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <!--page naviation-->
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" 
+    crossorigin="anonymous"></script>
+
+    <script src = "index.js"></script>
+  </body>
+</html>
