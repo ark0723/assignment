@@ -13,7 +13,7 @@ function ShowDate(){
   dateDiv.append(p)
 }
 
-// Shoe date when window uploaded
+// Show date when window uploaded
 document.addEventListener("DOMContentLoaded", function(){
   ShowDate()
 })
