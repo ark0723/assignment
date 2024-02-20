@@ -2,19 +2,60 @@
 <html lang="ko">
 <head>
     <title>Admin Page</title>
-    <link rel="stylesheet" href="/static/bootstrap.min.css"></script>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <style>
+      a:link {
+        color : black;
+        text-decoration: none;
+      }
+      a:visited {
+        color : gray;
+        text-decoration: none;
+      }
+      a:hover {
+        color : rgb(110, 195, 247);
+        text-decoration: underline;
+      }
+      #title{
+        text-align: center;
+        margin: 10px 0 50px;
+      }
+      #time_update{
+        text-align: right;
+        margin: 0;
+      }
+      .add-function{
+        float: right;
+      }
+
+      ul.pagination{
+        display: flex;
+        justify-content: center;
+      }
+      .no_result{
+        margin-top: 150px;
+        text-align: center;
+      }
+
+      div.pagination{
+        display: flex;
+        justify-content: center;
+      }
+    </style>
 </head>
 <body>
     <div class="container mt-3">
-      <div id="time_update"></div>
-      <h3 class="mt-5 mb-3">신규 등록 상품</h3>
+      <div id = "title">
+        <h3>신규 등록 상품</h3>
+      </div>
+      <br>
       <form class="row row-cols-lg-auto g-3 align-items-center" id = "filter-form" method = "GET" action = "/filter">      
-        <div class="row g-3">
-          <div class = "col-md-6">
+        <div class="row">
+          <div class = "col">
             <label class="visually-hidden" for="inlineFormSelectPref">카테고리</label>
             <select class="form-select" id="inlineFormSelectPref" name = "category">
               <!-- 카테고리 셀렉트 코드를 넣어주세요-->
-              <option selected value = ''>카테고리</option>
+              <option selected value = '0'>카테고리</option>
               <option value= '1'>Outer</option>
               <option value= '2'>Top</option>
               <option value= '3'>Bottom</option>
@@ -25,19 +66,42 @@
               <option value= '8'>Accessory</option>
             </select>
           </div>
-          <div class="col-md-6">
+          <div class="col">
               <!-- input 입력창 코드를 넣어주세요 -->
             <label class="visually-hidden" for="autoSizingInput">키워드</label>
-            <input type="text" class="form-control" id="autoSizingInput" name = "keyword" placeholder="제품명을 입력해주세요.">
+            <input type="text" class="form-control" id="autoSizingInput" name = "keyword" size = "40" placeholder="키워드를 입력해주세요.">
           </div>
-          <div class="col-3">
+          <div class="col">
             <!-- 조회버튼 코드를 넣어주세요 -->
             <button type="submit" class="btn btn-primary" id = "submit-btn">조회</button>
           </div>
         </div>
       </form>
+      <div class = "row add-function">
+        <div class= "col" id="time_update"></div>
+        <div class = "col">
+          <a class = "git_url" href="https://github.com/ark0723/assignment" target="_blank">
+            <img src = "/static/github.png" width = "30px" height ="30px">
+          </a>
+        </div>
+      </div>
+      <div id="time_update"></div>
+
       <div class="container mt-3">
         <table class="table table-sm">
+          {% if not data_list %}
+          <div class = "no_result">
+            <h2>조회한 데이터가 존재하지 않습니다. 다시 검색해주세요!</h2>
+            <nav>
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          {% else %}
             <thead>
                 <!-- 열의 속성값을 나타내는 코드를 작성해주세요 (예 : 카테고리, 브랜드, 상품명, 가격) -->
                 <tr class="table-info">
@@ -50,63 +114,47 @@
                   <th scope="col">가격</th>
                   <th scope="col">거래량</th>
                   <th scope="col">찜</th>
-                  <th scope="col">리뷰수</th>
-                  <th scope="col">상세페이지</th>
-                  <th scope="col">리뷰페이지</th>
+                  <th scope="col">리뷰</th>
                 </tr>
             </thead>
             <tbody id="data-table">
-                <!-- 추후 크롤링한 데이터가 들어가는 자리 -->
                 {% for row_data in data_list %}
-                <tr>
+                <tr name = "toggle-controler">
+                <!-- 추후 크롤링한 데이터가 들어가는 자리 -->
                   <th scop = "col">
-                    <div method = "get" action = "/filter/row">
-                      <input class="form-check-input" type="checkbox" id = "flexCheckDefault" name = "check_row" value="0">
-                    </div>
+                    <input class="form-check-input" type="checkbox" id = "target">
                   </th>
                   <th scop = "col">{{row_data['product_id']}}</th>
-                  <th scop = "col"><img class = "product_img" src = "{{row_data['img']}}" width = 50px height = 40px></th>
+                  <th scop = "col"><img class = "product_img" src = "{{row_data['img']}}" referrerpolicy = "no-referrer" alt = "No Image" width = 100px height = 80px></th>
                   <th scop = "col">{{row_data['category']}}</th>
                   <th scop = "col">{{row_data['brand']}}</th>
-                  <th scop = "col">{{row_data['title']}}</th>
+                  <th scop = "col">
+                    <a href = "{{row_data['product_link']}}">{{row_data['title']}}</a>
+                  </th>
                   <th scop = "col">{{row_data['price']}}</th>
                   <th scop = "col">{{row_data['sales']}}</th>
-                  <th scop = "col">{{row_data['wish']}}</th>
-                  <th scop = "col">{{row_data['review']}}</th>
                   <th scop = "col">
-                    <a href = "{{row_data['product_link']}}">Details</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-heart" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M2.965 12.695a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6-3.004 6-7 6a8 8 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a11 11 0 0 0 .398-2m-.8 3.108.02-.004c1.83-.363 2.948-.842 3.468-1.105A9 9 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.4 10.4 0 0 1-.524 2.318l-.003.011a11 11 0 0 1-.244.637c-.079.186.074.394.273.362a22 22 0 0 0 .693-.125M8 5.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132"/>
+                    </svg>
+                    {{row_data['wish']}}
                   </th>
                   <th scop = "col">
-                    <a href = "{{row_data['review_detail']}}">Reviews</a>
+                    <a href = "{{row_data['review_detail']}}">
+                      {{row_data['review']}}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-index" viewBox="0 0 16 16">
+                        <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 1 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 0 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.035a.5.5 0 0 1-.416-.223l-1.433-2.15a1.5 1.5 0 0 1-.243-.666l-.345-3.105a.5.5 0 0 1 .399-.546L5 8.11V9a.5.5 0 0 0 1 0V1.75A.75.75 0 0 1 6.75 1M8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v5.34l-1.2.24a1.5 1.5 0 0 0-1.196 1.636l.345 3.106a2.5 2.5 0 0 0 .405 1.11l1.433 2.15A1.5 1.5 0 0 0 6.035 16h6.385a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5 5 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.6 2.6 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046zm2.094 2.025"/>
+                      </svg>
+                    </a>
                   </th>
                 </tr>
                 {% endfor %}
+          {% endif %}
+          
             </tbody>
         </table>
-    </div>
-    <!-- 페이지 네이션 코드를 넣어주세요 -->
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-    <a class = "git_url" href="https://github.com/ark0723/assignment" target="_blank">
-      <img src = "/static/github.png" width = "20px" height ="20px">
-    </a>
-
+        <div class = "pagination">{{pagination.links | safe}}</div>
+        
     <script src="/static/index.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/static/bootstrap.min.js"></script>
