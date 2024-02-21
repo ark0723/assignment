@@ -18,14 +18,12 @@
       }
       #title{
         text-align: center;
-        margin: 10px 0 50px;
+        margin: 10px 0 15px;
       }
+
       #time_update{
         text-align: right;
         margin: 0;
-      }
-      .add-function{
-        float: right;
       }
 
       ul.pagination{
@@ -48,44 +46,52 @@
       <div id = "title">
         <h3>신규 등록 상품</h3>
       </div>
-      <br>
-      <form class="row row-cols-lg-auto g-3 align-items-center" id = "filter-form" method = "GET" action = "/filter">      
-        <div class="row">
-          <div class = "col">
-            <label class="visually-hidden" for="inlineFormSelectPref">카테고리</label>
-            <select class="form-select" id="inlineFormSelectPref" name = "category">
-              <!-- 카테고리 셀렉트 코드를 넣어주세요-->
-              <option selected value = '0'>카테고리</option>
-              <option value= '1'>Outer</option>
-              <option value= '2'>Top</option>
-              <option value= '3'>Bottom</option>
-              <option value= '4'>Shoes</option>
-              <option value= '5'>Bag</option>
-              <option value= '6'>Wallet</option>
-              <option value= '7'>Watch</option>
-              <option value= '8'>Accessory</option>
-            </select>
-          </div>
-          <div class="col">
-              <!-- input 입력창 코드를 넣어주세요 -->
-            <label class="visually-hidden" for="autoSizingInput">키워드</label>
-            <input type="text" class="form-control" id="autoSizingInput" name = "keyword" size = "40" placeholder="키워드를 입력해주세요.">
-          </div>
-          <div class="col">
-            <!-- 조회버튼 코드를 넣어주세요 -->
-            <button type="submit" class="btn btn-primary" id = "submit-btn">조회</button>
-          </div>
-        </div>
-      </form>
-      <div class = "row add-function">
-        <div class= "col" id="time_update"></div>
-        <div class = "col">
-          <a class = "git_url" href="https://github.com/ark0723/assignment" target="_blank">
-            <img src = "/static/github.png" width = "30px" height ="30px">
-          </a>
-        </div>
-      </div>
       <div id="time_update"></div>
+
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                  </svg>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" onclick = " return sortByPrice('0')">낮은 가격순</a></li>
+                  <li><a class="dropdown-item" onclick = " return sortByPrice('1')">높은 가격순</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">상품명 오름차순</a></li>
+                  <li><a class="dropdown-item" href="#">상품명 내림차순</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+            </ul>
+            <form class="d-flex" id = "form" role="search" method = "GET" action = "/filter">
+              <label class="visually-hidden" for="inlineFormSelectPref">카테고리</label>
+              <select class="form-select" id="inlineFormSelectPref" name = "category">
+                <!-- 카테고리 셀렉트 코드를 넣어주세요-->
+                <option selected value = "0">카테고리</option>
+                <option value= '1'>Outer</option>
+                <option value= '2'>Top</option>
+                <option value= '3'>Bottom</option>
+                <option value= '4'>Shoes</option>
+                <option value= '5'>Bag</option>
+                <option value= '6'>Wallet</option>
+                <option value= '7'>Watch</option>
+                <option value= '8'>Accessory</option>
+              </select>
+              <input class="form-control me-2" type="search" name = "keyword" placeholder="키워드를 입력해주세요" size = 40 aria-label="Search">
+              <input type="hidden" name = "price" id = "price" value = "">
+              <input type="hidden" name = "prod_name" id = "prod_name" value = "">
+              <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
 
       <div class="container mt-3">
         <table class="table table-sm">
@@ -154,9 +160,15 @@
             </tbody>
         </table>
         <div class = "pagination">{{pagination.links | safe}}</div>
+        <div id = "git">
+          <a class = "git_url" href="https://github.com/ark0723/assignment/tree/main/kream" target="_blank">
+            <img src = "/static/github.png" width = "25px" height ="25px">
+          </a>
+        </div>
         
     <script src="/static/index.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/static/bootstrap.min.js"></script>
+    <script src="/static/bootstrap.bundle.min.js"></script>
 </body>
 </html>
