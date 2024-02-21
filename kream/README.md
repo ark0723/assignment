@@ -22,5 +22,6 @@
 
 ### 4. 완성본
 <img width="600" height = "400" src="https://github.com/ark0723/assignment/assets/34089914/efd01bff-be2b-4d1d-9713-35b2be585062">
-- updated version
+
+#### updated version
 <img width="600" height = "400" src="https://github.com/ark0723/assignment/assets/34089914/e90c4c32-0dba-4f14-bde5-fe826eea6c23">
