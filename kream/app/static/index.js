@@ -18,14 +18,13 @@ document.addEventListener("DOMContentLoaded", function(){
   ShowDate()
 })
 
-function sortByPrice(order = "0"){
+function sortBy(order){
   // form element 불러오기
   const form = document.getElementById("form");
-  const price = document.getElementById("price");
-  // value = '0' : 오름차순(default), value = '1' : 내림차순
-  price.setAttribute('value', order);
+  const sort_element = document.getElementById("sortID");
+  sort_element.setAttribute("value", order);
   form.submit();
-  return true;
+  return true
 }
 
 function hide_row(){
