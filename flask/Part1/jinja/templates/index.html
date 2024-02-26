@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <h1>Hello, {{user}}!</h1>
+    {% if is_admin %}
+        <p>You have admin privileges.</p>
+    {% else %}
+        <p>You are guest user</p>
+    {% endif %}
+
+    <ul>
+        {% for item in items %}
+            <li>{{item}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
