@@ -2,6 +2,7 @@ from flask import Flask
 from flask_smorest import Api
 from db import db
 from models import User, Board
+from flask_migrate import Migrate
 from routes.board import board_blp
 from routes.users import usr_blp
 
@@ -14,6 +15,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #DB와 app객체 연결
 db.init_app(app)
+migrate = Migrate(app, db)
 
 # Flask-Smorest 설정 추가
 # OpenAPI관련 설정
@@ -43,6 +45,6 @@ def manage_users():
 if __name__ == "__main__":
     # crate table schema in the db
     with app.app_context():
-        db.create_all()
+        db.create_all() # 아무것도 없는 상태일때만 유호, 이미 존해하는 스키마의 경유 적용 안됨
     app.run(host='127.0.0.1', port = '8080', debug = True)
 

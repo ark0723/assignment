@@ -20,6 +20,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(30), nullable = False)
     email = db.Column(db.String(100), unique=True, nullable = False)
+    address = db.Column(db.String(200), nullable = False)
     # 특정 사용자(Board모델의 author필드와 연결)가 작성한 모든 게시글의 목록
     # lazy ='dynamic': 해당 관계를 나타내는 쿼리셋 반환
     # 쿼리셋은 db로부터 데이터를 즉시 가져오는 것이 아니라 필요할때 해당 쿼리를 실행하여 데이터 로드
