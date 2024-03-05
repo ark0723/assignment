@@ -1,14 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,django,flask,jupyternotebooks,dbeaver
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,django,flask,jupyternotebooks,dbeaver
 
-### yaml ###
-*.yaml
 <<<<<<< HEAD
-*/*.yaml
-=======
-**/*.yaml
 >>>>>>> 9cee5425e5cc534ef12a8c3c3396bc5f29b35f33
-
+>>>>>>> 86d8b635d469891468582f335147316bfd382b4c
 
 ### DBeaver ###
 # ide config file
