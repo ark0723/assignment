@@ -3,6 +3,7 @@
 
 ### yaml ###
 *.yaml
+*/*.yaml
 
 
 ### DBeaver ###
