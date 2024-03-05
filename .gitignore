@@ -24,7 +24,8 @@
 
 ### yaml ###
 *.yaml
-**/yaml
+**/*.yaml
+**/**/*.yaml
 
 ### Django ###
 *.log
