@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo App</title>
+    <script>
+      let accessToken = "";
+
+      function login() {
+        const name = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        fetch("/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, password }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            localStorage.setItem("access_token", data.access_token);
+            localStorage.setItem("refresh_token", data.refresh_token);
+
+            accessToken = data.access_token;
+            document.getElementById("loginResult").textContent =
+              "Logged in successfully";
+            fetchTodos(); // 로그인 후 Todo 목록 가져오기
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+
+      function createTodo() {
+        const title = document.getElementById("todoTitle").value;
+
+        fetch("/todo", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify({ title }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("createTodoResult").textContent =
+              "Todo created successfully";
+            fetchTodos(); // Todo 생성 후 목록 갱신
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+
+      function fetchTodos() {
+        fetch("/todo", {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+          .then((response) => response.json())
+          .then((todos) => {
+            let todosHTML = "";
+            todos.forEach((todo) => {
+              todosHTML += `
+                        <li>
+                            ${todo.title} - Completed: ${todo.completed}
+                            <button onclick="updateTodo(${todo.id}, true)">Complete</button>
+                            <button onclick="updateTodo(${todo.id}, false)">Undo</button>
+                            <button onclick="deleteTodo(${todo.id})">Delete</button>
+                        </li>`;
+            });
+            document.getElementById(
+              "todos"
+            ).innerHTML = `<ul>${todosHTML}</ul>`;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+
+      function updateTodo(todoId, completed) {
+        fetch(`/todo/${todoId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify({ completed }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            fetchTodos(); // Todo 업데이트 후 목록 갱신
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+
+      function deleteTodo(todoId) {
+        fetch(`/todo/${todoId}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            fetchTodos(); // Todo 삭제 후 목록 갱신
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Todo App</h1>
+
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <p id="loginResult"></p>
+
+    <h2>Create Todo</h2>
+    <input type="text" id="todoTitle" placeholder="Todo Title" />
+    <button onclick="createTodo()">Create Todo</button>
+    <p id="createTodoResult"></p>
+
+    <h2>Todo List</h2>
+    <div id="todos"></div>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram API Test</title>
+    <script>
+      function fetchUsers() {
+        fetch("/users")
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("users").innerHTML = JSON.stringify(
+              data,
+              null,
+              2
+            );
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function createUser() {
+        const username = document.getElementById("newUsername").value;
+        fetch("/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username: username }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("createUserResult").innerHTML =
+              JSON.stringify(data, null, 2);
+            fetchUsers(); // 사용자 목록 갱신
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function addPostToUser() {
+        const username = document.getElementById("postUsername").value;
+        const title = document.getElementById("postTitle").value;
+        fetch(`/users/post/${username}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ title: title, likes: 0 }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("addPostResult").innerHTML = JSON.stringify(
+              data,
+              null,
+              2
+            );
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+
+      function deleteUser() {
+        const username = document.getElementById("deleteUsername").value;
+        fetch(`/users/${username}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("deleteUserResult").innerHTML =
+              JSON.stringify(data, null, 2);
+            fetchUsers(); // 사용자 목록 갱신
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Instagram API Test</h1>
+
+    <button onclick="fetchUsers()">Fetch Users</button>
+    <pre id="users"></pre>
+
+    <h2>Create User</h2>
+    <input type="text" id="newUsername" placeholder="Username" />
+    <button onclick="createUser()">Create User</button>
+    <pre id="createUserResult"></pre>
+
+    <h2>Add Post to User</h2>
+    <input type="text" id="postUsername" placeholder="Username" />
+    <input type="text" id="postTitle" placeholder="Post Title" />
+    <button onclick="addPostToUser()">Add Post</button>
+    <pre id="addPostResult"></pre>
+
+    <h2>Delete User</h2>
+    <input type="text" id="deleteUsername" placeholder="Username" />
+    <button onclick="deleteUser()">Delete User</button>
+    <pre id="deleteUserResult"></pre>
+  </body>
+</html>
